@@ -1,3 +1,5 @@
+import Producto from "../models/producto"
+
 const productoCtrl = {}
 
 productoCtrl.borrarProducto = (req, res)=> {
