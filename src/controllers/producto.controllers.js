@@ -2,10 +2,6 @@ import Producto from "../models/producto"
 
 const productoCtrl = {}
 
-productoCtrl.borrarProducto = (req, res)=> {
-    res.send('alguien quiere borrar producto')
-  };
-
 productoCtrl.nuevoProducto = async(req, res)=> {
   try {
     console.log(req.body);
@@ -50,7 +46,7 @@ productoCtrl.obtenerProducto = async (req, res) => {
 }
 }
 
-productoCtrl.borrrarProducto = async (req, res) => {
+productoCtrl.borrarProducto = async (req, res) => {
   try {
     //buscar y borrar el producto mediante su id
     await Producto.findByIdAndDelete(req.params.id);
