@@ -7,9 +7,11 @@ const router = Router();
 
 router
   .route("/")
-  .delete(productoCtrl.borrarProducto)
+  .get(productoCtrl.listaProductos)
   .post(productoCtrl.nuevoProducto)
 
+
+  
 /* app.delete('/borrarproducto', (req, res)=> {
     res.send('alguien quiere borrar producto')
   })

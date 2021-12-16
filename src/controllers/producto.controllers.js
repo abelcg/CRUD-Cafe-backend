@@ -27,4 +27,15 @@ productoCtrl.nuevoProducto = async(req, res)=> {
     res.send('alguien quiere agregar producto')
 };  
 
+productoCtrl.listaProductos = async(req,res)=>{
+  try {
+    //crear un arreglo con los productos de la BD
+    const listaProductos = await Producto.find();
+    res.status(200).json(listaProductos);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({mensaje: 'Error al buscar los productos solicitados'});
+  }
+}
+
 export default productoCtrl;
