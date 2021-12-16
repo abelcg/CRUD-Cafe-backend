@@ -38,4 +38,37 @@ productoCtrl.listaProductos = async(req,res)=>{
   }
 }
 
+productoCtrl.obtenerProducto = async (req, res) => {
+  try {
+    //buscar un objeto  en la BD
+    //console.log(req.params.id)
+    const productoBuscado = await Producto.findById(req.params.id);
+    res.status(200).json(productoBuscado);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({mensaje: 'Error al buscar al producto solicitado'})
+}
+}
+
+productoCtrl.borrrarProducto = async (req, res) => {
+  try {
+    //buscar y borrar el producto mediante su id
+    await Producto.findByIdAndDelete(req.params.id);
+    res.status(200).json({mensaje: 'se pudo eliminar el producto solicitado'});
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({mensaje: 'Error al buscar al producto solicitado'})
+  }
+}
+productoCtrl.modificarProducto = async (req, res) => {
+  try {
+    //busque un producto por su id y lo modifique con los datos del body
+    await Producto.findByIdAndUpdate(req.params.id,req.body);
+    res.status(200).json({mensaje: 'el producto fue modificado'});
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({mensaje: 'Error al buscar al producto solicitado'})
+  }
+}
+
 export default productoCtrl;

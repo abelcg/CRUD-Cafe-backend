@@ -8,10 +8,14 @@ const router = Router();
 router
   .route("/")
   .get(productoCtrl.listaProductos)
-  .post(productoCtrl.nuevoProducto)
+  .post(productoCtrl.nuevoProducto);
 
+router
+  .route("/:id")
+  .get(productoCtrl.obtenerProducto)
+  .delete(productoCtrl.borrarProducto)
+  .put(productoCtrl.modificarProducto)
 
-  
 /* app.delete('/borrarproducto', (req, res)=> {
     res.send('alguien quiere borrar producto')
   })
